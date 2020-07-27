@@ -1,0 +1,43 @@
+
+<div>
+  <app-widget-area region="India"></app-widget-area>
+</div>
+
+<br>
+<mat-divider></mat-divider>
+<br>
+
+<div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="20px" class="stats-card">
+  <mat-card fxFlex="25"> <app-widget-card label="Cases" total="{{totalcase}}" region="India" ></app-widget-card></mat-card>
+  <mat-card fxFlex="25"> <app-widget-card label="Active" total="{{activecase}}" region="India"></app-widget-card></mat-card>
+  <mat-card fxFlex="25"> <app-widget-card label="Recovered" total="{{curedcase}}" region="India"></app-widget-card></mat-card>
+  <mat-card fxFlex="25"> <app-widget-card label="Death" total="{{deathcase}}" region="India"></app-widget-card></mat-card>
+</div>
+
+<br>
+<mat-divider></mat-divider>
+<br>
+<div>
+ <app-widget-bar></app-widget-bar>
+</div>
+<!--
+<div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="20px">
+  <mat-card fxFlex="60">
+    <app-table></app-table>
+  </mat-card>
+  <mat-card fxFlex="40"><app-widget-pie></app-widget-pie></mat-card>
+</div>
+-->
+<br>
+<mat-divider></mat-divider>
+<br>
+
+<div>
+  <iframe cheight="9" cwidth="7" frameborder="0" height="600" scrolling="no" src="https://public.flourish.studio/visualisation/1593630/embed" style="width:100%;height:600px;"></iframe>
+</div>
+
+<br>
+<mat-divider></mat-divider>
+<br>
+<iframe cheight="11" cwidth="9" height="800" scrolling="yes" src="//who.sprinklr.com" width="100%"></iframe>
+

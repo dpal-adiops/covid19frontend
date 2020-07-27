@@ -1,0 +1,29 @@
+<mat-nav-list>
+    <div class="profile-card">
+      <div class="header" *ngIf="user$ | async; let user">
+        <h2>{{user.first_name}} {{user.last_name}}</h2>
+        <h4>{{user.user_name}}</h4>
+      </div>
+      <img src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Deepak Pal">
+    </div>
+
+    <mat-divider></mat-divider>
+
+    <h2 matSubheader>Pages</h2>
+
+    <a mat-list-item  routerLinkActive="list-item-active" routerLink="/dashboard">Dashboard</a>
+    <a mat-list-item  routerLinkActive="list-item-active" routerLink="/state">States Wise </a>
+    <a mat-list-item  routerLinkActive="list-item-active" routerLink="/">Videos</a>
+
+    <mat-divider></mat-divider>
+    <h2 matSubheader>Tools</h2>
+
+    <a mat-list-item  routerLinkActive="list-item-active" routerLink="/">
+      <mat-icon>import_contacts</mat-icon>
+      Contacts
+    </a>
+    <a mat-list-item  routerLinkActive="list-item-active" routerLink="/courses">
+      <mat-icon>contact_phone</mat-icon>
+      Leads
+    </a>
+</mat-nav-list>

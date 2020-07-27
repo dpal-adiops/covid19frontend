@@ -1,0 +1,36 @@
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+    <button mat-icon-button (click)="toggleSidebar()">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <span>Covid19 India Tracker</span>
+    <div fxFlex fxLayout="row" fxLayoutAlign="flex-end">
+      <ul fxLayout="row" fxLayoutGap="50px" >
+        <li>
+          <button mat-button [matMenuTriggerFor]="menu">
+            <mat-icon>person_ouline</mat-icon>
+          </button>
+          <mat-menu #menu="matMenu">
+            <button mat-menu-item (click)="logOut()">
+              <mat-icon>exit_to_app</mat-icon>
+                Sign Out
+            </button>
+          </mat-menu>
+        </li>
+
+        <li>
+          <button mat-icon-button>
+            <mat-icon>settings</mat-icon>
+          </button>
+       </li>
+       <li>
+        <button mat-icon-button>
+          <mat-icon>help_outline</mat-icon>
+        </button>
+      </li>
+
+      </ul>
+    </div>
+    </mat-toolbar-row>
+</mat-toolbar>
+

@@ -1,0 +1,21 @@
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+    <button mat-icon-button>
+      <mat-icon>menu</mat-icon>
+    </button>
+    <span>COVID19 INDIA TRACKER APPLICATION</span>
+    <div fxFlex fxLayout="row" fxLayoutAlign="flex-end">
+      <ul fxLayout="row" fxLayoutGap="50px" >
+        <li>
+
+        </li>
+      </ul>
+    </div>
+    </mat-toolbar-row>
+</mat-toolbar>
+<div *ngIf="toggle">
+  <app-login-form  (showsignup)="(toggle = !toggle)" ></app-login-form>
+</div>
+<div *ngIf="!toggle">
+  <app-sign-up-page (showlogin)="(toggle = !toggle)"></app-sign-up-page>
+</div>
