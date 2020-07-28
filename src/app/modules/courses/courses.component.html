@@ -17,9 +17,9 @@
 <mat-divider></mat-divider>
 <br>
 <div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="20px" class="stats-card">
-  <mat-card fxFlex="25"> <app-widget-card label="Cases" total="{{ datamap.get(selected).total}}" region="{{selected}}" ></app-widget-card></mat-card>
-  <mat-card fxFlex="25"> <app-widget-card label="Active" total="{{datamap.get(selected).cases}}" region="{{selected}}"></app-widget-card></mat-card>
-  <mat-card fxFlex="25"> <app-widget-card label="Recovered" total="{{datamap.get(selected).cured}}" region="{{selected}}"></app-widget-card></mat-card>
-  <mat-card fxFlex="25"> <app-widget-card label="Death" total="{{datamap.get(selected).death}}" region="{{selected}}"></app-widget-card></mat-card>
+  <mat-card fxFlex="25"> <app-widget-card label="Cases"  region="{{selected}}" ></app-widget-card></mat-card>
+  <mat-card fxFlex="25"> <app-widget-card label="Active"  region="{{selected}}"></app-widget-card></mat-card>
+  <mat-card fxFlex="25"> <app-widget-card label="Recovered"  region="{{selected}}"></app-widget-card></mat-card>
+  <mat-card fxFlex="25"> <app-widget-card label="Death" region="{{selected}}"></app-widget-card></mat-card>
 </div>
 

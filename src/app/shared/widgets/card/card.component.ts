@@ -13,85 +13,96 @@ export class CardComponent implements OnInit {
   chartOptions: {};
   Highcharts = Highcharts;
   @Input() label: string;
-
+  series: number[];
+  total: number;
   region1: string;
 
-  @Input() total: string;
-
-  constructor(private store: Store<fromRoot.State>) { }
 
   @Input()
   set region(name: string) {
-  this.region1 = name;
-  this.showChart();
-  }
-
-  ngOnInit(): void {
+    this.region1 = name;
     this.showChart();
   }
+
+  constructor(private store: Store<fromRoot.State>) { }
+
+
+
+  ngOnInit(): void {
+    this.drawChart();
+  }
+
   showChart(): void {
     this.store.select(fromRoot.getStateData).subscribe(map => {
-
       const dataArr = map.get(this.region1);
+
       const timeline = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
       const cases = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
       const death = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
       const recovered = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
       const active = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+      let i = 0;
       dataArr.forEach(elem => {
         const index = timeline.findIndex(a => a == elem.month);
         cases[index] = elem.total;
         death[index] = elem.death;
         recovered[index] = elem.cured;
         active[index] = elem.cases;
+        i++;
       });
-      timeline.splice(-5);
-      cases.splice(-5);
-      death.splice(-5);
-      recovered.splice(-5);
-      active.splice(-5);
 
-      let data1: number[];
+      console.log(timeline.length);
+      cases.splice(i - ((timeline.length)));
+      death.splice(i - ((timeline.length)));
+      recovered.splice(i - ((timeline.length)));
+      active.splice(i - ((timeline.length)));
+
       if (this.label == 'Cases') {
-        data1 = cases;
+        this.series = cases;
+        this.total = cases[i - 1];
       } else if (this.label == 'Active') {
-        data1 = active;
+        this.series = active;
+        this.total = active[i - 1];
       } else if (this.label == 'Recovered') {
-        data1 = recovered;
+        this.series = recovered;
+        this.total = recovered[i - 1];
       } else if (this.label == 'Death') {
-        data1 = death;
+        this.series = death;
+        this.total = death[i - 1];
       }
 
-
-
-
-      this.chartOptions = {
-        chart: {
-          type: 'area',
-          backgroundColor: null,
-          borderWidth: 0,
-          margin: [2, 2, 2, 2],
-          height: 60
-
-        },
-        title: {
-          text: null
-        },
-        subtitle: {
-          text: null
-        },
-        legend: {
-          enabled: false
-        },
-        credits: {
-          enabled: false
-        },
-        exporting: false,
-        series: [{
-          data: data1
-        }]
-      };
     });
+    this.drawChart();
+  }
+
+  drawChart(): void{
+    this.chartOptions = {
+      chart: {
+        type: 'area',
+        backgroundColor: null,
+        borderWidth: 0,
+        margin: [2, 2, 2, 2],
+        height: 60
+
+      },
+      title: {
+        text: null
+      },
+      subtitle: {
+        text: null
+      },
+      legend: {
+        enabled: false
+      },
+      credits: {
+        enabled: false
+      },
+      exporting: false,
+      series: [{
+        data: this.series
+      }]
+    };
+
     setTimeout(() => {
       window.dispatchEvent(new Event('resize'));
     }, 300);

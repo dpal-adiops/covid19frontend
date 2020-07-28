@@ -32,7 +32,9 @@ export class LoginFormComponent implements OnInit {
     const password = this.form.get('password').value;
     this.tAuthService.login(username, password);
     this.store.select(fromRoot.getSnack).subscribe(msg => {
-     this.openSnackBar(msg);
+      if(msg){
+        this.openSnackBar(msg, 'Invalid Request');
+      }
     });
 
   }
@@ -45,8 +47,5 @@ export class LoginFormComponent implements OnInit {
 
   signup(): void {
     this.showsignup.emit(true);
-    this.store.select(fromRoot.getSnack).subscribe(msg => {
-      this.openSnackBar(msg);
-     });
   }
 }

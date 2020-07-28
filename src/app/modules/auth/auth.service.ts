@@ -59,7 +59,7 @@ export class AuthService {
           this.store.dispatch(new Auth.SetAuthenticated(token));
           this.fetchUserInfo(token);
         },
-        err => alert('Invalid Credentials'));
+        err => this.store.dispatch(new UI.SnackLoading('Invalid credentails')));
   }
 
   private fetchUserInfo(token: string): void {

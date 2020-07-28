@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { DashboardDataService } from '../dashboard/dashboard-data.service';
 import { Store } from '@ngrx/store';
 import * as fromRoot from './../../app.reducer';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-dashboard',
@@ -9,6 +10,8 @@ import * as fromRoot from './../../app.reducer';
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent implements OnInit {
+  uiload$: Observable<boolean>;
+
   totalcase: number;
   activecase: number;
   deathcase: number;
@@ -20,6 +23,8 @@ export class DashboardComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.uiload$ = this.store.select(fromRoot.getIsLoading);
+    /*
     this.store.select(fromRoot.getStateData).subscribe(map => {
       const dataArr = map.get('India');
       const timeline = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
@@ -41,5 +46,6 @@ export class DashboardComponent implements OnInit {
       this.deathcase = death[i-1];
       this.totalcase = cases[i-1];
     });
+    */
   }
 }
